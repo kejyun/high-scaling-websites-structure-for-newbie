@@ -1,0 +1,36 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – 書籍</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E6%9B%B8%E7%B1%8D/</link>
+    <description>Recent content in 書籍 on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E6%9B%B8%E7%B1%8D/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 書籍</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/book/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/book/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;mysql&#34;&gt;MySQL&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://it-ebooks.info/book/256/&#34;&gt;High Performance MySQL, 2nd Edition原文書免費下載&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

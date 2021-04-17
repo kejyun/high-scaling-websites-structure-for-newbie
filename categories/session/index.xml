@@ -1,0 +1,40 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – Session</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/session/</link>
+    <description>Recent content in Session on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/session/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Session</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/auth/session/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/auth/session/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;sticky-session--cookie-stickiness&#34;&gt;Sticky Session / Cookie stickiness&lt;/h2&gt;
+&lt;p&gt;當服務有超過 1 台以上的主機時，在主機前面會使用 Load balancer 去做 Request 的分流，假設有 3 台主機，同一個使用者的 Session 就會分散在不同的主機上，會導致使用者在不同主機的 Session 資料不一樣，可能使用者在主機 1 登入狀態，在主機 2 卻是登出的狀態。&lt;/p&gt;
+&lt;p&gt;可以使用 Sticky Session，讓同一個使用者的 Request 都指向固定一台實體主機，這樣可保持使用者登入的狀態&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/10494431/sticky-and-non-sticky-sessions&#34;&gt;Sticky and NON-Sticky sessions - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/blogs/aws/new-elastic-load-balancing-feature-sticky-sessions/&#34;&gt;New Elastic Load Balancing Feature: Sticky Sessions | AWS News Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

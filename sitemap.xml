@@ -7,7 +7,22 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/auth/session/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/all-together/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/question/benchmark/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/book/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -37,6 +52,11 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/auth/jwt/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -57,12 +77,27 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/article/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/static-page-cache/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/tool/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/video/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -122,6 +157,11 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/auth/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/select-sql-explain-test/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -132,7 +172,17 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/question/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/data-distribute/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -173,6 +223,46 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/array/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/article/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/article/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/auth/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/auth/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/benchmark/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/benchmark/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/book/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/book/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -332,6 +422,26 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/json-web-token/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/json-web-token/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/jwt/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/jwt/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/lock-table/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -372,6 +482,26 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/question/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/question/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/reference/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/reference/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/select-explain/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -398,6 +528,16 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/server/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/session/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/session/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -437,12 +577,32 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/tool/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/tool/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/transaction/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/transaction/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/video/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/video/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -497,6 +657,16 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E5%A2%9E%E5%8A%A0-database-server/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -527,12 +697,52 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E5%A4%A7%E5%9E%8B%E7%B6%B2%E7%AB%99%E6%9E%B6%E6%A7%8B/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E5%A4%A7%E5%9E%8B%E7%B6%B2%E7%AB%99%E6%9E%B6%E6%A7%8B/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E5%BD%B1%E7%89%87/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E5%BD%B1%E7%89%87/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -547,6 +757,16 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E6%8E%88%E6%AC%8A/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E6%8E%88%E6%AC%8A/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E6%95%99%E5%AD%B8%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -557,12 +777,32 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E6%96%87%E7%AB%A0/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E6%96%87%E7%AB%A0/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B8/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B8/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/%E6%9B%B8%E7%B1%8D/</loc>
+    <lastmod>2021-04-18T08:50:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E6%9B%B8%E7%B1%8D/</loc>
     <lastmod>2021-04-18T08:50:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

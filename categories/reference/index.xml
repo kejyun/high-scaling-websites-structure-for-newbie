@@ -1,0 +1,135 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – Reference</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/reference/</link>
+    <description>Recent content in Reference on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/reference/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 書籍</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/book/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/book/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;mysql&#34;&gt;MySQL&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://it-ebooks.info/book/256/&#34;&gt;High Performance MySQL, 2nd Edition原文書免費下載&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 文章</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/article/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/article/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.qa-knowhow.com/?p=2314&#34;&gt;10+個高流量網站架構的效能提升解決方案&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/pulse/100-open-source-big-data-architecture-papers-anil-madan&#34;&gt;100 open source Big Data architecture papers for data professionals.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;資料庫&#34;&gt;資料庫&lt;/h2&gt;
+&lt;h3 id=&#34;連線池&#34;&gt;連線池&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Connection_pool&#34;&gt;Connection pool - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;mysql&#34;&gt;MySQL&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kejyun.com/2012/12/Compare-MyISAM-And-InnoDB-Database-Engine-In-MySQL.html&#34;&gt;KeJyun學習日誌: 在MySQL中MyISAM與InnoDB資料庫引擎比較&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;實際案例&#34;&gt;實際案例&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/&#34;&gt;Stack Overflow: The Architecture - 2016 Edition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bbs.gameres.com/thread_485619.html&#34;&gt;《英雄联盟》玩家聊天服务的持久层演进&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://aws.amazon.com/tw/solutions/case-studies/kkbox/&#34;&gt;KKBOX Case Study – Amazon Web Services (AWS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;http-cache&#34;&gt;HTTP Cache&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.techbridge.cc/2017/06/17/cache-introduction/&#34;&gt;循序漸進理解 HTTP Cache 機制 | TechBridge 技術共筆部落格&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;python&#34;&gt;Python&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://python.jobbole.com/87814/&#34;&gt;Python + Django 如何支撑了 7 亿月活用户的 Instagram？&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://engineering.instagram.com/sharding-ids-at-instagram-1cf5a71e5a5c&#34;&gt;Sharding &amp;amp; IDs at Instagram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://engineering.instagram.com/dismissing-python-garbage-collection-at-instagram-4dca40b29172&#34;&gt;Dismissing Python Garbage Collection at Instagram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 工具</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/tool/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/tool/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;javascript&#34;&gt;JavaScript&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jsperf.com/&#34;&gt;jsPerf — JavaScript performance playground&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;database&#34;&gt;Database&lt;/h2&gt;
+&lt;h3 id=&#34;連線池&#34;&gt;連線池&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.tildeslash.com/libzdb/#&#34;&gt;Database Connection Pool Library | Libzdb&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 影片</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/video/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/video/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;流量分散式處理&#34;&gt;流量分散式處理&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=NrMM3s7Mbjo&#34;&gt;Load Balancing Stateless vs. Stateful Applications&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 參考資料</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/reference/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

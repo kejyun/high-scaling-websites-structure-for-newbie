@@ -1,0 +1,43 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – JSON Web Token</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/json-web-token/</link>
+    <description>Recent content in JSON Web Token on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/json-web-token/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: JWT（JSON Web Token）</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/auth/jwt/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/auth/jwt/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;jwtjson-web-token&#34;&gt;JWT（JSON Web Token）&lt;/h1&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://jwt.io/&#34;&gt;JSON Web Tokens - jwt.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://juejin.im/entry/5974088ef265da6c2c7f5c52&#34;&gt;Authentication 方案优化探索（JWT, Session, Refresh Token, etc.） - 后端 - 掘金&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.albert-chen.com/laravel-auto-refresh-jwt/&#34;&gt;在 Laravel 實現自動 Refresh JWT 機制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ithelp.ithome.com.tw/articles/10196759&#34;&gt;[Day-32] (實作)用JWT取代傳統Session來驗證使用者身份 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ithelp.ithome.com.tw/articles/10196967&#34;&gt;[Day-33] (實作)使用JWT來存取API內容(上) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ithelp.ithome.com.tw/articles/10197054&#34;&gt;[Day-34] (實作)使用JWT來存取API內容(下) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/&#34;&gt;Stop using JWT for sessions - joepie91&amp;rsquo;s Ramblings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
