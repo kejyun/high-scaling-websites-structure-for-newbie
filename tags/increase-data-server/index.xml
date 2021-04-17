@@ -1,0 +1,40 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – increase data server</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/increase-data-server/</link>
+    <description>Recent content in increase data server on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/increase-data-server/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 增加 Database Server</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/increase-database-server/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/increase-database-server/</guid>
+      <description>
+        
+        
+        &lt;p&gt;在網站成長之後一段時間後，發現資料庫在查詢（SELECT）及資料異動（INSERT、UPDATE、DELETE）之間，因為查詢處理變得太多，使得互相競爭資料庫的資源非常嚴重，進而導致系統回應時間變得很慢。&lt;/p&gt;
+&lt;p&gt;這時候我們可能會想要把不同的資料表分散在不同的資料庫當中，分散查詢處理的資源，而會需要更改程式讀取資料庫的邏輯架構。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-increase-database-server.png&#34; alt=&#34;增加 Database Server&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

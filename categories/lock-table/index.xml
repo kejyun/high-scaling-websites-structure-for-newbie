@@ -1,0 +1,97 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – lock table</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/lock-table/</link>
+    <description>Recent content in lock table on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/lock-table/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 鎖表 Lock Table</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/table-lock/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/table-lock/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;鎖表&#34;&gt;鎖表&lt;/h1&gt;
+&lt;h2 id=&#34;定義&#34;&gt;定義&lt;/h2&gt;
+&lt;p&gt;在要更新資料表的資料時，&lt;code&gt;MySQL&lt;/code&gt;會將表資料鎖定無法讀取，直到資料異動完畢，&lt;code&gt;MyISAM&lt;/code&gt; 預設支援 &lt;code&gt;Table-level lock&lt;/code&gt;，而 &lt;code&gt;InnoDB&lt;/code&gt; 預設支援 &lt;code&gt;Row-level lock&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;table-level-lock&#34;&gt;Table-level lock&lt;/h3&gt;
+&lt;p&gt;資料表資料異動時，將「&lt;code&gt;整個資料表（Table）&lt;/code&gt;」都鎖定住無法讀取&lt;/p&gt;
+&lt;h3 id=&#34;row-level-lock&#34;&gt;Row-level lock&lt;/h3&gt;
+&lt;p&gt;資料表資料異動時，將「&lt;code&gt;要更新的資料列（row）&lt;/code&gt;」都鎖定住無法讀取&lt;/p&gt;
+&lt;h2 id=&#34;注意事項&#34;&gt;注意事項&lt;/h2&gt;
+&lt;p&gt;在使用 &lt;code&gt;Row-level lock&lt;/code&gt; 時必需要 &lt;code&gt;明確指定要異動資料的主鍵（Primary Key）&lt;/code&gt;，否則將會改用 &lt;code&gt;Table-level lock&lt;/code&gt; 去做資料表的異動&lt;/p&gt;
+&lt;h2 id=&#34;範例&#34;&gt;範例&lt;/h2&gt;
+&lt;p&gt;假設有 user 資料表，裡面有 id 與 name 的欄位，id 是主鍵&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SQL&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Table lock&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Row lock&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;No lock&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;備註&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SELECT * FROM user WHERE id=&amp;lsquo;1&amp;rsquo; FOR UPDATE;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;v&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;明確指定主鍵，並且有此筆資料，row lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SELECT * FROM user WHERE id=&#39;-1&#39; FOR UPDATE;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;v&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;明確指定主鍵，若查無此筆資料，無 lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SELECT * FROM user WHERE name=&amp;lsquo;KeJyun&amp;rsquo; FOR UPDATE;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;v&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;無主鍵，table lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SELECT * FROM user WHERE id&amp;lt;&amp;gt;&amp;lsquo;1&amp;rsquo; FOR UPDATE;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;v&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;主鍵不明確，table lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SELECT * FROM user WHERE id LIKE &amp;lsquo;3&amp;rsquo; FOR UPDATE;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;v&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;主鍵不明確，table lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;備註&#34;&gt;備註&lt;/h2&gt;
+&lt;p&gt;FOR UPDATE 僅適用於 InnoDB，且必須在交易區塊(BEGIN/COMMIT)中才能生效。&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kejyun.com/2012/12/Compare-Tabel-And-Row-Level-Lock-On-MySQL.html&#34;&gt;KeJyun學習日誌: MySQL鎖表(Lock Table)Table-level與Row-level比較&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

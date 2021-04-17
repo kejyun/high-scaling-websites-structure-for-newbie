@@ -1,0 +1,52 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – High Useability Service Structure</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/high-useability-service-structure/</link>
+    <description>Recent content in High Useability Service Structure on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/high-useability-service-structure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 高可用性的服務架構</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/high-useability-service-structure/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/high-useability-service-structure/</guid>
+      <description>
+        
+        
+        &lt;p&gt;透過不斷的增加 Web Server 就可以提高使用者訪問量，但這樣的架構非常的龐大，當要對這樣的架構進行改動時會相當的不方便，可用性變得不高。&lt;/p&gt;
+&lt;p&gt;而且部署機器和維護也必變得相當麻煩，龐大的應用服務架構要在 N 台機器上進行複製、啟動都需要花很多的時間，當機器出問題時也很難立即找出拿台機器出了問題，更有可能是某個應用服務的程式出現 Bug，導致整個站掛掉都沒辦法使用了。&lt;/p&gt;
+&lt;p&gt;在優化調校時也比較難操作，因為部署的機器每一台都需要進襲調校，沒辦法只進行針對性的調校。&lt;/p&gt;
+&lt;p&gt;餘是為了解決這樣的問題，就發展出大型的分佈式應用，而這樣的架構可能會遇到許多挑戰：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;分布式應用需要提供高效能且穩定的架構&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;將龐大的應用拆分出來需要耗費很長的時間，而且需要對業務的整理和系統依賴關係進行控制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何維護（依賴管理、執行狀況管理、錯誤追踪、調校優化、監控和示警等）好這個龐大的分佈式應用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;完成這一步後，系統的架構差不多會到相對穩定的階段，也會使用大量便宜的機器去支撐突如其來的訪問流量&lt;/p&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

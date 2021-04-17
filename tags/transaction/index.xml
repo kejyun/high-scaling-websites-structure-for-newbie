@@ -1,0 +1,46 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – transaction</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/transaction/</link>
+    <description>Recent content in transaction on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/transaction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 交易 Transaction</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/transaction/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/transaction/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;控制innodb-transaction&#34;&gt;控制InnoDB Transaction&lt;/h2&gt;
+&lt;h3 id=&#34;關閉自動提交&#34;&gt;關閉自動提交：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SET&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;autocommit&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;開啟自動提交&#34;&gt;開啟自動提交：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SET&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;autocommit&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 MySQL InnoDB 預設所有的資料異動都是 &lt;code&gt;Transaction（交易）&lt;/code&gt;，當與資料庫做連線的時候，InnoDB 會採用&lt;code&gt;自動提交（autocommit）&lt;/code&gt;的方式，所以除非使用 &lt;code&gt;BEGIN;&lt;/code&gt; 及 &lt;code&gt;COMMIT;&lt;/code&gt; 將異動語法包覆起來&lt;em&gt;&lt;strong&gt;設定為同一個  Transaction，否則任何一個資料異動的語法（INSERT、DELETE、UPDATE）會認為是一個獨立的 Transaction&lt;/strong&gt;&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;所以資料表每次做資料異動的時候會一直&lt;code&gt;提交 (COMMIT)&lt;/code&gt; 去更新日誌，若有 1000筆 獨立的SQL要執行就會被 COMMIT 1000 次，所以在下異動語法之前，可以使用指令 &lt;code&gt;SET autocommit=0;&lt;/code&gt; 關閉自動提交，等異動完成後，再使用指令 &lt;code&gt;SET autocommit=1;&lt;/code&gt; 開啟自動提交。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SET&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;autocommit&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#a40000&#34;&gt;異動（&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;INSERT&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;、&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;DELETE&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;、&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;UPDATE&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;）大量資料&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;SQL語法&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SET&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;autocommit&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kejyun.com/2012/12/MySQL-Efficiency-Adjustment.html&#34;&gt;KeJyun學習日誌: MySQL效率調校&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

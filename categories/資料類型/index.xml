@@ -1,0 +1,72 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – 資料類型</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B/</link>
+    <description>Recent content in 資料類型 on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 資料類型</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/data-type/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/data-type/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;越小越好&#34;&gt;越小越好&lt;/h2&gt;
+&lt;p&gt;要使用能夠用來正確儲存資料的最小類型的資料型態，要確保不會低估要儲存的資料大小，因為當資料可以確定用比較少的資料去儲存的時候，所&lt;code&gt;使用的空間&lt;/code&gt;也會更少，所&lt;code&gt;需要的索引空間&lt;/code&gt;也會越少，取得資料所需要的&lt;code&gt;計算時間&lt;/code&gt;也會越短。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在可以用&lt;code&gt;CHAR(20)&lt;/code&gt;去儲存資料時，就不要用&lt;code&gt;CHAR(200)&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在可以用&lt;code&gt;VARCHAR(20)&lt;/code&gt;去儲存資料時，就不要用&lt;code&gt;VARCHAR(200)&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在可以用&lt;code&gt;TINYINT&lt;/code&gt;去儲存資料時，就不要用&lt;code&gt;INT&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在可以用&lt;code&gt;TEXT&lt;/code&gt;去儲存資料時，就不要用&lt;code&gt;LONGTEXT&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在可以用&lt;code&gt;BLOB&lt;/code&gt;去儲存資料時，就不要用&lt;code&gt;LONGBLOB&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;越簡單越好&#34;&gt;越簡單越好&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;整數（INT）&amp;gt; 固定字串（CHAR）&amp;gt; 變動字串（VARCHAR）&amp;gt; 文字（TEXT）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;越簡單的資料類型，資料庫所需要用來建立索引的效率越好，因為資料類型越複雜代表資料的排列組合越多，所以需要更大的索引及計算去取得資料&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在可以用整數（INT）去儲存資料時，就不要用固定字串（CHAR）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在可以用固定字串（CHAR）去儲存資料時，就不要用變動字串（VARCHAR）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在可以用變動字串（VARCHAR）去儲存資料時，就不要用文字（TEXT）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;盡量不使用null&#34;&gt;盡量不使用NULL&lt;/h2&gt;
+&lt;p&gt;若非必要儲存NULL的資料，否則要盡可能的把資料欄位設定為NOT NULL，資料庫很難最佳化有NULL資料欄位的查詢，可以NULL的資料欄位需要更多的儲存空間，資料庫還需要對其進行特殊處理，而當有NULL資料欄位使用&lt;code&gt;索引（INDEX）&lt;/code&gt;的時候，每一條的索引紀錄必需要額外紀錄資料，導致查詢時索引的效率降低。&lt;/p&gt;
+&lt;p&gt;若真的要儲存NULL，在&lt;code&gt;不影響原有的資料&lt;/code&gt;的情況下，可以考慮用&lt;code&gt;0&lt;/code&gt;、&lt;code&gt;特殊值&lt;/code&gt;&amp;hellip;等等之類的值去代替，可以用來區別是否為NULL&lt;/p&gt;
+&lt;h2 id=&#34;結論&#34;&gt;結論&lt;/h2&gt;
+&lt;p&gt;一切的資料類型都只能看自己應用的需求去決定，如果沒辦法還是要用比較複雜的資料類型，那還是必須要用，資料的完整性比任何的東西都重要多了，效率就想辦法用&lt;code&gt;增加機器&lt;/code&gt;或者是&lt;code&gt;優化資料表結構&lt;/code&gt;&amp;hellip;等等的其他方式去達成，不要為了效率增加而強迫使用特定的資料類型，這樣反而是因噎廢食。&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kejyun.com/2012/12/Tips-For-Use-MySQL-With-High-Performance.html&#34;&gt;KeJyun學習日誌: 提高存取MySQL效率小技巧&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

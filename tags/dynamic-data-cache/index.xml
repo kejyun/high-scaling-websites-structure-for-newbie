@@ -1,0 +1,48 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – dynamic data cache</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/dynamic-data-cache/</link>
+    <description>Recent content in dynamic data cache on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/dynamic-data-cache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 動態資料快取</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/dynamic-data-cache/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/dynamic-data-cache/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;code&gt;產生的靜態頁面暫存&lt;/code&gt;可以應付整個頁面很少改變的網頁，但是若網頁中有一部分的資料遭到異動，為了讓使用者取得到最新的資料，我們勢必要清除頁面並重新撈取資料庫的資料去產生新的&lt;code&gt;靜態頁面暫存&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;但對於資料層來說，其實只有&lt;code&gt;少部分的資料&lt;/code&gt;有異動需要重新讀取，若我們需要重新去資料庫撈取&lt;code&gt;所有&lt;/code&gt;頁面需要的資料，再去兜頁面所需要的資訊，勢必是浪費資料庫資源的，還記得我在&lt;a href=&#34;High-Scaling-Websites-Structure-Concept.md&#34;&gt;概念章節&lt;/a&gt;中有提到說 &lt;code&gt;資料庫存取是很昂貴的&lt;/code&gt;，過多的查詢，導致資料庫的存取效率降低，且資料庫的的連線因為系統的限制，所以也沒辦法無限制的增加連線數量。&lt;/p&gt;
+&lt;p&gt;所以我們會想要把一些很少異動的資料去做快取（Cache）預存下來，當下一位使用者來索取相同的資料時，則不去資料庫進行查詢，直接將之前預存的資料丟回給使用者，提高系統反應的時間及資料存取的效率，快取的資料會依照我們設定資料的過期時間，當超過過期時間後，再重複去資料庫撈取資料，看看有沒有異動。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-dynamic-data-cache.png&#34; alt=&#34;動態資料快取&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;注意事項&#34;&gt;注意事項&lt;/h2&gt;
+&lt;h3 id=&#34;快取時間&#34;&gt;快取時間&lt;/h3&gt;
+&lt;p&gt;快取的失效時間通常會依我們的應用去做設定，也因為系統資源的關係（記憶體大小、硬碟容量大小&amp;hellip;等等）的原因，沒有辦法將快取設定為永久存放，像是做討論區的文章，通常熱門的文章在短時間會被重複的讀取，但熱度可能會隨著時間做遞減，可能大約 3 天的時間文章就會變得越少人存取，當沒有人存取的時候，我們就會希望將快取清除，避免佔住系統資源（記憶體或硬碟容量），所以我們可能會針對討論區的文章做 3 天時間的快取，等超過 3 天 後，快取會自動地將過期的快取資料做清除，除非又有人再次讀取該篇文章，才會再做一次快取（失效時間再次設為 3 天），一直重複這樣的動作，等到資料不再被存取，就只會保留在資料庫的洪流當中。&lt;/p&gt;
+&lt;h3 id=&#34;手動清除快取&#34;&gt;手動清除快取&lt;/h3&gt;
+&lt;p&gt;在部落格發表的文章被讀取時，我們會對文章進行快取，但有時文章可能因為作者「打錯字」或者「需要補充資料」，導致文章需要被異動更新，為了能夠讓快取有最新被異動過的資料，通常我們會手動的清除這篇文章的快取，這樣就可以確保下一個存取這篇文章的讀者，一定會拿到最新的文章資料。&lt;/p&gt;
+&lt;h3 id=&#34;資料分散式快取&#34;&gt;資料分散式快取&lt;/h3&gt;
+&lt;p&gt;快取的資料通常是用 &lt;code&gt;key&lt;/code&gt; 及 &lt;code&gt;value&lt;/code&gt; 的方式去紀錄資料，而我們通常會把資料做片段的快取，像是部落格文章 A 的快取我們通常會存放在 &lt;code&gt;key&lt;/code&gt; 為 &lt;code&gt;blog_post:post_id_A&lt;/code&gt; 的快取資料中，以此類推，文章 B 的快取 &lt;code&gt;key&lt;/code&gt; 為 &lt;code&gt;blog_post:post_id_B&lt;/code&gt;，用這樣的方式對每個不同的小資源去做快取，而不是將所有部落格文章 A 及 B 存放在一整個快取 &lt;code&gt;key&lt;/code&gt; 為 &lt;code&gt;blog_post:all&lt;/code&gt; 中，因為當使用者異動文章 A 的時候，若我們要刪除快取的資料則只需要刪除文章 A 的快取即可，而不需要把其他不必要刪除的文章快取也一併刪除了，提高快取使用的效率，通常要看自己的應用及使用者存取資料的方式，需要用哪一種方式的快取比較適合，每一種應用都有適合自己的快取方法。&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

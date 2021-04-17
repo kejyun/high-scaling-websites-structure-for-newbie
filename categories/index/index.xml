@@ -1,0 +1,232 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – index</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/index/</link>
+    <description>Recent content in index on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/categories/index/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 索引</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/db-index/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/database/mysql/db-index/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;索引順序&#34;&gt;索引順序&lt;/h2&gt;
+&lt;p&gt;在所有的資料庫內，建立索引是提昇資料庫資料存取效率的很重要的方式，但是錯誤的&lt;code&gt;索引順序&lt;/code&gt;或是 &lt;code&gt;SQL 語法&lt;/code&gt; 都可能讓查詢語法變成了 slow query。&lt;/p&gt;
+&lt;p&gt;假設我們有一個部落格文章的資料表，裡頭存放所有使用者的部落格文章，資料表資料如下：&lt;/p&gt;
+&lt;h3 id=&#34;posts&#34;&gt;posts&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;post_id&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;post_status&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;author&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;content&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;正常&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;kejyun&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;文章 1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;刪除&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;kejyun&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;文章 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;正常&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;kejyun&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;文章 3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;正常&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;kj&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;文章 4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;刪除&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;kj&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;文章 5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果我們要撈取 &lt;code&gt;作者為 kejyun&lt;/code&gt; 且 &lt;code&gt;狀態正常&lt;/code&gt; 的文章，我們可能會用下列語法去撈取&lt;/p&gt;
+&lt;h3 id=&#34;sql-語法-1&#34;&gt;SQL 語法 1&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;*&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;posts&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;post_status&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;正常&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;AND&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;author&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;kejyun&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或者用這個語法撈取&lt;/p&gt;
+&lt;h3 id=&#34;sql-語法-2&#34;&gt;SQL 語法 2&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;*&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;posts&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;author&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;kejyun&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;AND&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;post_status&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;正常&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;這兩句 SQL 語法都可以撈出我們想要的結果，但是對於不同的索引執行的效率卻是差異很多&lt;/p&gt;
+&lt;p&gt;如果我們的索引是 &lt;code&gt;post_status&lt;/code&gt;、&lt;code&gt;author&lt;/code&gt; 的順序，&lt;code&gt;SQL 語法 1&lt;/code&gt; 則會正確的使用索引來做查詢，執行的效率會很快。&lt;/p&gt;
+&lt;p&gt;但是對於&lt;code&gt;SQL 語法 2&lt;/code&gt;，會因為找不到適合該語法的索引去做查詢，所以會變成不使用索引，而對整個資料表作完整的檢索，去查找出資料來。&lt;/p&gt;
+&lt;h4 id=&#34;主要原因是&#34;&gt;主要原因是&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 SQL 語法 WHERE 的順序會影響查詢索引的順序&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;同樣的索引資料在不同的順序，表示為不同的索引，所以 &lt;code&gt;post_status、author&lt;/code&gt; 與 &lt;code&gt;author、post_status&lt;/code&gt; 這兩個索引雖然是使用相同的資料欄位，但因為順序不同所帶來的查詢效果也不同&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;同一句 SQL 語法只能使用單一個索引，所以不同的索引沒辦法共用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;資料庫沒有這麼人工智慧，會去判斷兩個 SQL 語法可以使用相同的索引去查找出相同的資料，他會依照程式設計師給的語法，依序去查找是否有可用的索引。&lt;/p&gt;
+&lt;h4 id=&#34;分析-sql-語法-1&#34;&gt;分析 SQL 語法 1&lt;/h4&gt;
+&lt;p&gt;在 &lt;code&gt;SQL 語法 1&lt;/code&gt; 中，我們 WHERE 的第 1 個條件是 &lt;code&gt;post_status = &#39;正常&#39;&lt;/code&gt;，所以資料庫會去查找有沒有索引開頭是使用 &lt;code&gt;post_status&lt;/code&gt; 的索引。&lt;/p&gt;
+&lt;p&gt;若有該索引，則再判斷 WHERE 的第 2 個條件 &lt;code&gt;author = &#39;kejyun&#39;&lt;/code&gt;，所以資料庫會去查找有沒有索引開頭是使用 &lt;code&gt;post_status&lt;/code&gt; 的索引，且該索引的第 2 個索引是使用 &lt;code&gt;author&lt;/code&gt; 的索引。&lt;/p&gt;
+&lt;p&gt;資料庫會一直判斷比較 SQL 語法 WHERE 條件與索引之間的順序關係，直到沒辦法匹配後，後面的沒辦法匹配索引則使用完整比對的方式去進行查詢&lt;/p&gt;
+&lt;h4 id=&#34;分析-sql-語法-2&#34;&gt;分析 SQL 語法 2&lt;/h4&gt;
+&lt;p&gt;在 &lt;code&gt;SQL 語法 2&lt;/code&gt; 中，我們 WHERE 的第 1 個條件是 &lt;code&gt;author = &#39;kejyun&#39;&lt;/code&gt; 但我們資料庫沒有建立索引開頭是使用 &lt;code&gt;author&lt;/code&gt; 的索引，所以只能對資料庫使用完整比對。&lt;/p&gt;
+&lt;h3 id=&#34;原理&#34;&gt;原理&lt;/h3&gt;
+&lt;p&gt;索引就像是書籍的目錄一樣，若以童話故事書為例，我們書中會收錄世界各國的故事，且每個故事有他自己的類型，像是奇幻、驚悚、傳說、神話。&lt;/p&gt;
+&lt;p&gt;如果我們以國家當做大標題（e.g. 第 1 索引），以故事類型當作小標題（e.g. 第 2 索引），那麼書籍目錄會像：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;台灣
+&lt;ul&gt;
+&lt;li&gt;奇幻&lt;/li&gt;
+&lt;li&gt;驚悚&lt;/li&gt;
+&lt;li&gt;傳說&lt;/li&gt;
+&lt;li&gt;神話&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;日本
+&lt;ul&gt;
+&lt;li&gt;奇幻&lt;/li&gt;
+&lt;li&gt;驚悚&lt;/li&gt;
+&lt;li&gt;傳說&lt;/li&gt;
+&lt;li&gt;神話&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;歐美
+&lt;ul&gt;
+&lt;li&gt;奇幻&lt;/li&gt;
+&lt;li&gt;驚悚&lt;/li&gt;
+&lt;li&gt;傳說&lt;/li&gt;
+&lt;li&gt;神話&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;印度
+&lt;ul&gt;
+&lt;li&gt;奇幻&lt;/li&gt;
+&lt;li&gt;驚悚&lt;/li&gt;
+&lt;li&gt;傳說&lt;/li&gt;
+&lt;li&gt;神話&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;etc&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果我們要找&lt;code&gt;台灣&lt;/code&gt;且類型為&lt;code&gt;傳說&lt;/code&gt;的童話故事，我們的目光會先移動到台灣的區段，然後在這個區塊下找到類型為&lt;code&gt;傳說&lt;/code&gt;的故事&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;台灣
+&lt;ul&gt;
+&lt;li&gt;奇幻&lt;/li&gt;
+&lt;li&gt;驚悚&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;傳說&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;神話&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是如果我們要找所有類型為&lt;code&gt;傳說&lt;/code&gt;的故事中，發生在&lt;code&gt;台灣&lt;/code&gt;的故事，依照步驟我們會希望先把所有&lt;code&gt;傳說&lt;/code&gt;的故事先列出來，再從這個目錄下去找屬於&lt;code&gt;台灣&lt;/code&gt;的故事，所以我們希望會看到像這樣的目錄（索引）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;傳說
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;台灣&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;日本&lt;/li&gt;
+&lt;li&gt;歐美&lt;/li&gt;
+&lt;li&gt;印度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是在這本故事書的目錄（索引）中，我們沒有看到這樣的目錄結構，所以我們沒辦法透過目錄快速的找到我們要看的所有類型為&lt;code&gt;傳說&lt;/code&gt;的章節資料，只好從頭到尾的去翻閱整本書，直到找到全部我們&lt;code&gt;傳說&lt;/code&gt;章節的故事，然後再從這些找出來的&lt;code&gt;傳說&lt;/code&gt;故事中，再去區別出哪些為&lt;code&gt;台灣&lt;/code&gt;的故事。&lt;/p&gt;
+&lt;p&gt;所以目錄（索引）的規則就是希望看故事書的人要怎麼快速找到他想要的東西，當沒有我們可以參考的目錄的話，就像資料庫沒有可參考的索引一樣，就會找得比較慢（但還是找得出來）。&lt;/p&gt;
+&lt;h3 id=&#34;結論&#34;&gt;結論&lt;/h3&gt;
+&lt;p&gt;因為索引順序的不同，以及 SQL WHERE 條件順序的不同，會使得資料庫在使用索引進行查詢有不同的效率，所以要謹慎的使用索引及 SQL 語法，才能達到高效率的查詢結果。&lt;/p&gt;
+&lt;h2 id=&#34;控制索引更新&#34;&gt;控制索引更新&lt;/h2&gt;
+&lt;h3 id=&#34;關閉索引更新&#34;&gt;關閉索引更新：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;table_name&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;DISABLE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;KEYS&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;開啟索引更新&#34;&gt;開啟索引更新：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;table_name&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;ENABLE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;KEYS&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;MySQL在新增（INSERT）、刪除（DELETE）、更新（UPDATE）的時候會去更新現有的索引表，而更新索引表也需要花費一些時間，當異動一筆資料的時候，索引表也做一次的異動，但當在做大量資料異動的時候，例如異動1000筆資料，索引表也需要異動1000次，而其實我們只需要最後一次（最新）的異動就好了，前面的999次都是不需要做的索引表異動更新，所以在異動大量資料前，可以使用指令 &lt;code&gt;ALTER TABLE table_name DISABLE KEYS;&lt;/code&gt; 關閉索引更新，等異動完成後，再使用指令 &lt;code&gt;ALTER TABLE table_name ENABLE KEYS;&lt;/code&gt; 開啟索引更新。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;users&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;DISABLE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;KEYS&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#a40000&#34;&gt;異動（&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;INSERT&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;、&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;DELETE&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;、&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;UPDATE&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;）大量資料&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;SQL語法&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;users&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;ENABLE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;KEYS&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;自定義hash-index做字串完整比對&#34;&gt;自定義Hash Index做字串完整比對&lt;/h2&gt;
+&lt;p&gt;我們知道在對&lt;code&gt;字串（CHAR或VARCHAR）&lt;/code&gt;去做查找的時候效率會遠比對&lt;code&gt;整數（INT）&lt;/code&gt;查找還慢，因CRC32對字串做校驗後會回傳&lt;code&gt;整數的校驗碼&lt;/code&gt;，我們在資料表增加一個整數型態欄位，儲存要比對字串的校驗碼。&lt;/p&gt;
+&lt;h3 id=&#34;crc32&#34;&gt;crc32&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;建立str 的 32 位迴圈冗余校驗碼多項式。這通常用於檢查傳輸的資料是否完整。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由於 PHP 的整數是帶符號的，許多 crc32 校驗碼將返回負整數，因此你需要使用 sprintf() 或 printf() 的「%u」格式符來取得表示無符號 crc32 校驗碼的字串。
+在原本實作email登入時會對email欄位做索引，所以會先去查找email字串欄位的資料，之後再去比對密碼是否正確，但若資料過多字串比對的效率會降低很多&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;email&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;user&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;email&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kejyun@gmail.com&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;AND&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;password&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xxx&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我們加入了 &lt;code&gt;emailcrc&lt;/code&gt; 的欄位去儲存對 email 字串的校驗碼，再查找 email 字串欄位的資料前，先透過crc整數校驗碼快速過濾掉不可能的資料，之後再從少數的資料中做 email 字串欄位字串比對，如果資料量很大，這樣的效率會提升很多。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;email&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;FROM&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;user&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;emailcrc&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;CRC32&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kejyun@gmail.com&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;AND&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;email&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kejyun@gmail.com&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;AND&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;password&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xxx&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;這邊要注意的是沒辦法只使用 crc 校驗碼去當作唯一的條件，&lt;code&gt;不同的字串可能會出現相同的校驗碼&lt;/code&gt;，所以最後還是要對你要比對的字串做比對，避免查詢發生錯誤。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;email&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;emailcrc&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;mailto:kejyun1@gmail.com&#34;&gt;kejyun1@gmail.com&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1234567890&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;mailto:kejyun2@gmail.com&#34;&gt;kejyun2@gmail.com&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1234567890&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kejyun.com/2012/12/Tips-For-Use-MySQL-With-High-Performance.html&#34;&gt;KeJyun學習日誌: 提高存取MySQL效率小技巧&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kejyun.com/2012/12/MySQL-Efficiency-Adjustment.html&#34;&gt;KeJyun學習日誌: MySQL效率調校&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.percona.com/files/presentations/WEBINAR-MySQL-Indexing-Best-Practices.pdf&#34;&gt;MySQL Indexing: Best Practices Slide PDF&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.percona.com/files/presentations/WEBINAR-tools-and-techniques-for-index-design.pdf&#34;&gt;Tools and Techniques for Index Design PDF Slide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.percona.com/files/presentations/WEBINAR2012-02-Explain-Demystified.pdf&#34;&gt;EXPLAIN Demystified PDF slide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.percona.com/files/presentations/percona-live/london-2012/PLUK2012-optimizing-mysql-configuration.pdf&#34;&gt;Optimizing MySQL Configuration PDF Slide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://por.tw/Website_Design/PHP5/function.crc32.html&#34;&gt;PHP手冊 - crc32&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

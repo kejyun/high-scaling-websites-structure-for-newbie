@@ -1,0 +1,359 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>High Scaling Websites 大型網站架構菜雞修煉場 – Website structure evolution</title>
+    <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/website-structure-evolution/</link>
+    <description>Recent content in Website structure evolution on High Scaling Websites 大型網站架構菜雞修煉場</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 17 Apr 2021 08:50:29 +0800</lastBuildDate>
+    
+	  <atom:link href="https://high-scaling-websites-structure-for-newbie.kejyun.com/tags/website-structure-evolution/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Web 與 Database 在一起</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/all-together/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/all-together/</guid>
+      <description>
+        
+        
+        &lt;p&gt;把 Web 或 Database 弄在同一部機器這樣的方式，通常是用在程式開發的「本地測試機」中，或者通常不會&lt;code&gt;同時&lt;/code&gt;拿來服務太多的人的應用（共同上線人數），像是一般基本的公司形象網站、個人介紹頁&amp;hellip;等等不會有太多人同時存取的資料懷鏡時才會使用這樣的架構。&lt;/p&gt;
+&lt;p&gt;除了基本的 Apache（Nginx）及 MySQL（Postgres），視情況需要設置會把其他的服務也放在同一台機器，像是 Memcached、Redis、Node.js。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-all-together.png&#34; alt=&#34;Web 與 Database 在一起&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;使用時機&#34;&gt;使用時機&lt;/h2&gt;
+&lt;h3 id=&#34;同時上線人數約-10--15-人左右&#34;&gt;同時上線人數約 10 ~ 15 人左右&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;人數為 KeJyun 過去經驗大概估算的人數，沒有經過實際測試僅參考用&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;當一台機器需要乘載多種服務時，同樣的主機資源要做很多事情，當然處理的效率通常都比較低&lt;/p&gt;
+&lt;p&gt;以飲料店來當例子，1 個服務生可以同時服務 3 位客人（主機同時有 3 個人發出請求），同時替客人做點餐結帳、做飲料的工作，但是當客人越來越多時來到 15 人的時候，因為人的能力有限（主機的效能有限），所以後面很多人就需要排隊等前面幾位客人拿到飲料後才能繼續服務，所以就需要等待排隊（主機回應時間拉長），所以要看自己的經濟規模（同時乘載規模）去聘請適當人數的員工（規劃使用不同的主機架構）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;同時上線非每日上限，同日上線指的是同一時先有多個人同時跟伺服器要資源&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;服務的可用度不需要太高&#34;&gt;服務的可用度不需要太高&lt;/h3&gt;
+&lt;p&gt;大部份的使用者可能最高能夠忍受等待&lt;a href=&#34;http://news.networkmagazine.com.tw/news/2012/03/02/38107/&#34;&gt;一貶眼的時間&lt;/a&gt;（約 250 毫秒 = 0.25 秒），但是這個標準是在產品一秒鐘幾十萬上下時才需要達到的可用度標準（像是股票交易、電子商務網站、社群網站&amp;hellip;等等），一般只是測試用或是形象的網站不需要那麼高的可用度，能夠在 1 ~ 2 秒內回應都是在可接受的範圍（當然不能太久超過 4、5 秒以上，使用者會以為網站掛掉了沒有回應）&lt;/p&gt;
+&lt;h3 id=&#34;資料有做異地備援&#34;&gt;資料有做異地備援&lt;/h3&gt;
+&lt;p&gt;資料可以說是整個企業的資產及生命，當資料自己有做異地備援的話，就可以用這樣的方式，不然主機太操很容易掛掉（就像人一樣加班太久沒休息，就很容易生病），裡面的資料可能會因為沒辦法救回，所以若是有做資料備份，不怕資料不見的狀況下再去用這樣的架構去做服務。&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://news.networkmagazine.com.tw/news/2012/03/02/38107/&#34;&gt;你願意花多久等待網站回應？ 一貶眼都嫌太久了&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.google.com/analytics/answer/2383341?hl=zh-Hant&#34;&gt;瞭解網站速度 - Analytics (分析) 說明&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Web 與 Database 分手</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/break-up/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/break-up/</guid>
+      <description>
+        
+        
+        &lt;p&gt;當服務越來越多人需要去同時存取時，原本的 &lt;code&gt;Web&lt;/code&gt; 與 &lt;code&gt;Database 在一起&lt;/code&gt; 的架構會變得不敷使用了，網站的 &lt;code&gt;反應時間&lt;/code&gt; 會變得越來越慢，伺服器的 &lt;code&gt;CPU&lt;/code&gt; 及 &lt;code&gt;記憶體&lt;/code&gt; 的消耗也會變得越來越高。&lt;/p&gt;
+&lt;p&gt;而且服務彼此還會互相搶機器的資源，若機器發生問題導致資料庫的資料也出現問題，會造成的麻煩會變得更大，於是我們就會想要把 Web 與 Database 的機器相互分離。&lt;/p&gt;
+&lt;p&gt;當用這樣的架構之後，你會發現效率會比之前提高很多，服務彼此不會搶資源了，但是就是要付出 $ 去添購機器摟（當可以用 $ 解決的問題都是小問題）&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-break-up.png&#34; alt=&#34;Web 與 Database 分手&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;使用時機&#34;&gt;使用時機&lt;/h2&gt;
+&lt;h3 id=&#34;同時上線人數約-20--40-人左右&#34;&gt;同時上線人數約 20 ~ 40 人左右&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;人數為 KeJyun 過去經驗大概估算的人數，沒有經過實際測試僅參考用&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;當我們的服務能夠尤多台機器去分攤時，機器彼此的處理效率當然就會提高許多，可以乘載的人數也會提高&lt;/p&gt;
+&lt;p&gt;以飲料店來當例子，1 個服務生可以同時服務 3 位客人（主機同時有 3 個人發出請求），但是若有 2 位服務生就可以同時服務 6 位客人（主機同時有 6 個人發出請求），
+將替客人做點餐結帳、做飲料的工作做分工處理，一為服務生同時可以替 6 位客人做點餐結帳的工作，另一位則可以同時替 6 為客人做飲料，整個服務可以乘載的量就會提高很多，
+讓每個人專心做一件事情，效率也會提高很多&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;同時上線非每日上限，同日上線指的是同一時先有多個人同時跟伺服器要資源&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;需要維持一定的服務可用度&#34;&gt;需要維持一定的服務可用度&lt;/h3&gt;
+&lt;p&gt;當服務需要提供比較多人去做存取時，我們就必須要提供一定水準的服務可用度，將反應時間保持在 1 ~ 2 秒內的範圍。&lt;/p&gt;
+&lt;h3 id=&#34;資料定期備份&#34;&gt;資料定期備份&lt;/h3&gt;
+&lt;p&gt;雖然服務還在剛起步的階段，但是資料還是非常重要的公司資產，若只有一台 Database，我們還是需要定期的將資料備份出來（最少 1 天備援一次），避免機器掛掉的機會。&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 前端靜態頁面暫存</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/static-page-cache/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/static-page-cache/</guid>
+      <description>
+        
+        
+        &lt;p&gt;當越來越多人來存取你的應用時，你會發現你服務的 &lt;code&gt;反應時間&lt;/code&gt; 又開始變慢了，你可以會發現 &lt;code&gt;Web&lt;/code&gt; 機器效能的使用沒有 &lt;code&gt;Database&lt;/code&gt; 那麼大，就會發現現在的瓶頸應該是卡在 &lt;code&gt;Database&lt;/code&gt; 有太多人去進行存取了。&lt;/p&gt;
+&lt;p&gt;我麼這時候會試著將頁面中很少異動的頁面（大約 1~2 天才會更新的頁面），做成靜態頁面的快取，在撈取資料庫資料時把資料產生成靜態 HTML 檔案，當下次再次的讀取相同資料時，則直接將靜態的 HTML 回傳，減少資料庫的存取，提高存取資料庫的效率（有需要再去進行查詢）。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-static-page-cache.png&#34; alt=&#34;前端靜態頁面暫存&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;注意事項&#34;&gt;注意事項&lt;/h2&gt;
+&lt;h3 id=&#34;整頁靜態頁不可頻繁的修改&#34;&gt;整頁靜態頁不可頻繁的修改&lt;/h3&gt;
+&lt;p&gt;因為會將整個頁面都做是要給使用者看到的整個結果頁，所以頁面的資料若時常修改的話，則勢必要一直重新產生新的靜態頁面，但這樣就失去了做靜態頁面暫存的意義了&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 頁面片段暫存</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/partial-page-cache/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/partial-page-cache/</guid>
+      <description>
+        
+        
+        &lt;p&gt;在我們將靜態頁面暫存起來後，減少了很多對資料庫不必要的存取，&lt;code&gt;回應時間&lt;/code&gt; 提升了了很多。&lt;/p&gt;
+&lt;p&gt;但我們也會想看看能不能在動態產生的頁面中，對於部分的很少變動的資料也做暫存的處理，這樣的話就可以減少部分動態網頁頁面不必要的存取了。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-partial-page-cache.png&#34; alt=&#34;頁面片段暫存&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 動態資料快取</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/dynamic-data-cache/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/dynamic-data-cache/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;code&gt;產生的靜態頁面暫存&lt;/code&gt;可以應付整個頁面很少改變的網頁，但是若網頁中有一部分的資料遭到異動，為了讓使用者取得到最新的資料，我們勢必要清除頁面並重新撈取資料庫的資料去產生新的&lt;code&gt;靜態頁面暫存&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;但對於資料層來說，其實只有&lt;code&gt;少部分的資料&lt;/code&gt;有異動需要重新讀取，若我們需要重新去資料庫撈取&lt;code&gt;所有&lt;/code&gt;頁面需要的資料，再去兜頁面所需要的資訊，勢必是浪費資料庫資源的，還記得我在&lt;a href=&#34;High-Scaling-Websites-Structure-Concept.md&#34;&gt;概念章節&lt;/a&gt;中有提到說 &lt;code&gt;資料庫存取是很昂貴的&lt;/code&gt;，過多的查詢，導致資料庫的存取效率降低，且資料庫的的連線因為系統的限制，所以也沒辦法無限制的增加連線數量。&lt;/p&gt;
+&lt;p&gt;所以我們會想要把一些很少異動的資料去做快取（Cache）預存下來，當下一位使用者來索取相同的資料時，則不去資料庫進行查詢，直接將之前預存的資料丟回給使用者，提高系統反應的時間及資料存取的效率，快取的資料會依照我們設定資料的過期時間，當超過過期時間後，再重複去資料庫撈取資料，看看有沒有異動。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-dynamic-data-cache.png&#34; alt=&#34;動態資料快取&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;注意事項&#34;&gt;注意事項&lt;/h2&gt;
+&lt;h3 id=&#34;快取時間&#34;&gt;快取時間&lt;/h3&gt;
+&lt;p&gt;快取的失效時間通常會依我們的應用去做設定，也因為系統資源的關係（記憶體大小、硬碟容量大小&amp;hellip;等等）的原因，沒有辦法將快取設定為永久存放，像是做討論區的文章，通常熱門的文章在短時間會被重複的讀取，但熱度可能會隨著時間做遞減，可能大約 3 天的時間文章就會變得越少人存取，當沒有人存取的時候，我們就會希望將快取清除，避免佔住系統資源（記憶體或硬碟容量），所以我們可能會針對討論區的文章做 3 天時間的快取，等超過 3 天 後，快取會自動地將過期的快取資料做清除，除非又有人再次讀取該篇文章，才會再做一次快取（失效時間再次設為 3 天），一直重複這樣的動作，等到資料不再被存取，就只會保留在資料庫的洪流當中。&lt;/p&gt;
+&lt;h3 id=&#34;手動清除快取&#34;&gt;手動清除快取&lt;/h3&gt;
+&lt;p&gt;在部落格發表的文章被讀取時，我們會對文章進行快取，但有時文章可能因為作者「打錯字」或者「需要補充資料」，導致文章需要被異動更新，為了能夠讓快取有最新被異動過的資料，通常我們會手動的清除這篇文章的快取，這樣就可以確保下一個存取這篇文章的讀者，一定會拿到最新的文章資料。&lt;/p&gt;
+&lt;h3 id=&#34;資料分散式快取&#34;&gt;資料分散式快取&lt;/h3&gt;
+&lt;p&gt;快取的資料通常是用 &lt;code&gt;key&lt;/code&gt; 及 &lt;code&gt;value&lt;/code&gt; 的方式去紀錄資料，而我們通常會把資料做片段的快取，像是部落格文章 A 的快取我們通常會存放在 &lt;code&gt;key&lt;/code&gt; 為 &lt;code&gt;blog_post:post_id_A&lt;/code&gt; 的快取資料中，以此類推，文章 B 的快取 &lt;code&gt;key&lt;/code&gt; 為 &lt;code&gt;blog_post:post_id_B&lt;/code&gt;，用這樣的方式對每個不同的小資源去做快取，而不是將所有部落格文章 A 及 B 存放在一整個快取 &lt;code&gt;key&lt;/code&gt; 為 &lt;code&gt;blog_post:all&lt;/code&gt; 中，因為當使用者異動文章 A 的時候，若我們要刪除快取的資料則只需要刪除文章 A 的快取即可，而不需要把其他不必要刪除的文章快取也一併刪除了，提高快取使用的效率，通常要看自己的應用及使用者存取資料的方式，需要用哪一種方式的快取比較適合，每一種應用都有適合自己的快取方法。&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 網站架構演進</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 增加 Web Server</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/increase-web-server/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/increase-web-server/</guid>
+      <description>
+        
+        
+        &lt;p&gt;隨著網站應用使用者增加，我們會發現 Web Server 機器的壓力變得比較高了，這個時候就會開始考慮增加 Web Server 了。增加 Web Server 除了可以降低機器的壓力外，同時也可以在 Web Server 掛掉後，有備援機器可以使用，避免整個服務完全中斷。&lt;/p&gt;
+&lt;p&gt;在增加 Web Server 之後，會碰到一些問題：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何將流量平均分配到不同的 Web Server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;通常我們會使用 Apache 的負載平衡方法，或是 LVS 相關的負載平衡方法去分配這些流量&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;如何讓 Web Server 的資料同步&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;像是使用者的 session 在不同機器要如何同步，可能會考慮使用資料庫、cookie 或同步 Session 的機制&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;快取（cache）資料同步&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;像是快取會員的個人資料，可能會使用快取同步的機制，或者是分散式快取的方式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;上傳的檔案同步&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可能會使用檔案共享的方式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-increase-web-server.png&#34; alt=&#34;增加 Web Server&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 增加 Database Server</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/increase-database-server/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/increase-database-server/</guid>
+      <description>
+        
+        
+        &lt;p&gt;在網站成長之後一段時間後，發現資料庫在查詢（SELECT）及資料異動（INSERT、UPDATE、DELETE）之間，因為查詢處理變得太多，使得互相競爭資料庫的資源非常嚴重，進而導致系統回應時間變得很慢。&lt;/p&gt;
+&lt;p&gt;這時候我們可能會想要把不同的資料表分散在不同的資料庫當中，分散查詢處理的資源，而會需要更改程式讀取資料庫的邏輯架構。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-increase-database-server.png&#34; alt=&#34;增加 Database Server&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 分散式資料</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/data-distribute/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/data-distribute/</guid>
+      <description>
+        
+        
+        &lt;p&gt;在做資料庫分散之後，若單一資料表的資料太多，我們會想要用分散資料庫的概念，對資料表中的資料進行分散式處理，而會再需要更改程式讀取資料庫及資料表的邏輯架構。&lt;/p&gt;
+&lt;p&gt;而在這我們就需要規劃資料分散在多個資料庫及資料表的架構，要怎麼去存取，我們通常會設計一個統一的資料庫及資料表資源分散的統一架構，去進行管理資源的存放及存取方式。&lt;/p&gt;
+&lt;p&gt;像是 Facebook 每天有好幾百萬千萬的文章資訊會被發表出來，我們可能會對各個使用者做文章存取的資源分配，將使用者的資源分配記錄記在統一個資源管理架構中做記錄，紀錄的資訊可能會是 User A 的文章資料存放在 DB_1 及 TABLE_2，而 User B 的文章資料存放在 DB_3 及 TABLE_1，當要存取個別使用者的資料資料，根據資源管理分配的的方式，分別去不同的資料庫及資料表撈取資料。&lt;/p&gt;
+&lt;p&gt;而當需要使用分散式資料的情況下，可能也會發現因為資料量過大，導致快取同步的方式出了問題，讓快取不能只存放在本地端而用同步的方式進行分享，可能需要採用分散式快取的方式去快取資料。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;架構圖：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/architecture-evolution-data-distribute.png&#34; alt=&#34;增加 Database Server&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 增加更多的 Web Server</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/increase-more-web-server/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/increase-more-web-server/</guid>
+      <description>
+        
+        
+        &lt;p&gt;在做完分散式資料庫及分散式資料表之後，又開始看到流量暴增的的時候，發現系統的回應時間又開始變慢了，你可能會看到 Web Server（Apache、Nginx&amp;hellip;etc）那邊阻塞了很多的請求，而導致每個存取的使用者需要時間等待而導致回應時間增加了，這個時候我們就可能需要增加更多的 Web Server 去應付這些大量的請求。&lt;/p&gt;
+&lt;p&gt;在做完這些工作之後，會進到一個像是可以無限擴充的階段，網站流量增加時，就是不斷的增加 Server （$$$） 去應付大量的流量。&lt;/p&gt;
+&lt;p&gt;在做 Web Server 負載平衡時可能會遇到下列問題：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本的負載平衡（Apache 負載平衡、LVS&amp;hellip;etc）無法應付巨量的請求量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果經費允許的話（都流量暴增了，會不想要投入更多的 $ 去讓自己的事業擴大嗎 XD），可以採購負載平衡的硬體設備&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;e.g. &lt;a href=&#34;https://f5.com/glossary/load-balancer&#34;&gt;F5 Load Balancer&lt;/a&gt;、&lt;a href=&#34;http://www.citrix.com.tw/products/netscaler-application-delivery-controller/overview.html&#34;&gt;Netsclar Load Balancer&lt;/a&gt;&amp;hellip;etc&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;若真的經濟不允許，可以將應用從邏輯上做分類，不同類型的應用分散給不同的負載平衡群集處理。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;訊息同步的文件分享方法出現瓶頸&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這時可以根據不同的網站業務需求去做不同的分散式文件系統&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://f5.com/glossary/load-balancer&#34;&gt;F5 Load Balancer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.citrix.com.tw/products/netscaler-application-delivery-controller/overview.html&#34;&gt;Netsclar Load Balancer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Database 讀寫分離</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/set-database-read-write-server/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/set-database-read-write-server/</guid>
+      <description>
+        
+        
+        &lt;p&gt;當流量又開始暴增時，會發現原本無限制擴充 Server （$$$）的架構會讓資料庫連線的資源不敷使用。&lt;/p&gt;
+&lt;p&gt;因為而在做資料異動的時候，若有要更新範圍（range）的資料，很容易把資料進行鎖定，進而彼此影響到查詢上面的效能。
+在 &lt;a href=&#34;http://wiki.mbalib.com/zh-tw/80/20%E6%B3%95%E5%88%99&#34;&gt;80/20 法則&lt;/a&gt;中，大部份 80% 人都是在看文章比較多（讀取資料：SELECT），只有少部分 20% 的人或意見領袖，才會發表文章表示看法（異動資料：INSERT、UPDATE、DELETE），而在做資料異動的時候很有可能會對資料進行鎖定，進而去影響讀取的速度。若是要異動範圍（range）的資料，很容易把資料進行鎖定，更會影響到彼此查詢上面的效能。&lt;/p&gt;
+&lt;p&gt;這時候我們就會想要把資料庫做&lt;code&gt;讀寫分離&lt;/code&gt;，所以像是 Facebook、部落格之類的媒體，大多會把資料庫做&lt;code&gt;讀寫分離&lt;/code&gt;，使用者做異動的行為會去主資料庫（Master）去做寫入的動作，然後從資料庫（Slave）在定期的去同步資料庫的內容，而其他大部份的讀者在讀取資料時，都去讀取從資料庫（Slave）的資料，這樣就不會有因為資料異動而導致資料被鎖定，造成讀取變慢的問題。&lt;/p&gt;
+&lt;p&gt;而在主從架構中，可以是有很多台從的資料庫（Slave），透過分散式處理可以將不同的連線分配給不同的從資料庫（Slave），讓每一台從的資料庫平均分配差不多的連線量，因為需要處理的連線減少了，進而讓每個查詢都能夠在短時間都能夠回應查詢結果，提高系統的可用度。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;資料庫主從架構中，&lt;code&gt;主（Master）&lt;/code&gt;資料庫用來做&lt;code&gt;寫入資料異動（INSERT、UPDATE、DELETE）&lt;/code&gt;的動作，&lt;code&gt;從（Slave）&lt;/code&gt;資料庫用來做&lt;code&gt;讀取（SELECT）&lt;/code&gt;的動作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;而若有些很少在查詢的資料，像是 &lt;code&gt;Log 紀錄&lt;/code&gt;或是在做 &lt;code&gt;分析的資料&lt;/code&gt;，這類的資料從放在可靠性較高的資料庫（MySQL、Postgres、Oracle&amp;hellip;etc）中，對於我們來說是比較浪費的，因為他會佔用存取資料庫的資源，這類的資料我們可能可以考慮用一些 NoSQL 的方案去存取這些資料，讓重要的資料存放在可靠性的資料庫就好，提高資料庫的可用性。&lt;/p&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.mbalib.com/zh-tw/80/20%E6%B3%95%E5%88%99&#34;&gt;80/20 法則&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 高可用性的服務架構</title>
+      <link>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/high-useability-service-structure/</link>
+      <pubDate>Sat, 17 Apr 2021 08:50:29 +0800</pubDate>
+      
+      <guid>https://high-scaling-websites-structure-for-newbie.kejyun.com/docs/architecture-evolution/high-useability-service-structure/</guid>
+      <description>
+        
+        
+        &lt;p&gt;透過不斷的增加 Web Server 就可以提高使用者訪問量，但這樣的架構非常的龐大，當要對這樣的架構進行改動時會相當的不方便，可用性變得不高。&lt;/p&gt;
+&lt;p&gt;而且部署機器和維護也必變得相當麻煩，龐大的應用服務架構要在 N 台機器上進行複製、啟動都需要花很多的時間，當機器出問題時也很難立即找出拿台機器出了問題，更有可能是某個應用服務的程式出現 Bug，導致整個站掛掉都沒辦法使用了。&lt;/p&gt;
+&lt;p&gt;在優化調校時也比較難操作，因為部署的機器每一台都需要進襲調校，沒辦法只進行針對性的調校。&lt;/p&gt;
+&lt;p&gt;餘是為了解決這樣的問題，就發展出大型的分佈式應用，而這樣的架構可能會遇到許多挑戰：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;分布式應用需要提供高效能且穩定的架構&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;將龐大的應用拆分出來需要耗費很長的時間，而且需要對業務的整理和系統依賴關係進行控制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何維護（依賴管理、執行狀況管理、錯誤追踪、調校優化、監控和示警等）好這個龐大的分佈式應用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;完成這一步後，系統的架構差不多會到相對穩定的階段，也會使用大量便宜的機器去支撐突如其來的訪問流量&lt;/p&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.9streets.cn/art-php-489.html&#34;&gt;一步步構建大型網站架構- 架構設計- | 九街| 白開水的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
